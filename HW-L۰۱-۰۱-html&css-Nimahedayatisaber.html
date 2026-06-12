@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My site</title>
+</head>
+<style>
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #001800;
+        text-align: center;
+    }
+
+    img {
+        width: 700px;
+    }
+
+    .header {
+        padding: 20px;
+        color: white;
+        border-bottom: white 1px solid;
+    }
+
+    header {
+        height: 70px;
+        background-color: bisque;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: black;
+        border: bisque;
+        padding: 0px 20px;
+    }
+    .nav-link{
+        display: flex;
+        gap: 20px;
+    }
+    .logo{
+        border: 1px;
+        border-radius: 100%;
+        width: 45px;
+    }
+    .game {
+        margin-top: 20px;
+        color: white;
+        text-align: center;
+        display: grid;
+        justify-content: center;
+        border-bottom: 0.5px ghostwhite solid;
+        & img{
+            border: 1px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        & p {
+            width: 700px;
+            margin-bottom: 50px;
+        }
+
+        & h4 {
+            margin-top: 10px;
+            font-size: x-large;
+
+            & a {
+                color: aliceblue;
+            }
+        }
+    }
+
+    .game-name:hover {
+        font-size: larger;
+        color: #c7d4ff;
+        transition: 0.5s;
+    }
+</style>
+<body>
+<header class="nav">
+    <div class="nav-link">
+        <a href="">Home</a>
+        <a href="">About Us</a>
+        <a href="">Phone</a>
+    </div>
+    <div>
+        <img class="logo"
+             src="https://img.freepik.com/free-vector/cute-astronaut-chill-relaxation-game-controller-cartoon-vector-icon-illustration-technology-science-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3717.jpg?semt=ais_hybrid&w=740&q=80">
+    </div>
+</header>
+<div class="header">
+    <h2>The best game</h2>
+</div>
+<div class="game">
+    <h4><a class="game-name" href="https://forza.net/forzahorizon6">Japan Awaits </a></h4>
+    <img src="https://cms-assets.xboxservices.com/assets/3e/29/3e294a2c-66ef-4ba5-90fb-53dda66b88ea.jpg?n=0399951111277_GLP-Page-Hero-1084_1920x1080_02.jpg">
+    <p>In Forza Horizon 6, you will explore a vast campaign of discovery and Festival racing, playable solo and in co-op
+        with your friends. You’ll start as a tourist and must prove you’ve got what it takes to join the Horizon
+        Festival as a rookie driver, all while you Discover Japan and complete your Collection Journal. Qualify for the
+        Festival in the Horizon Invitational, then rise through the ranks in progressively faster cars and earn new
+        Wristbands to become a Horizon Legend. Your newfound status will grant you access to Legend Island, an exclusive
+        space reserved for the greatest drivers.</p>
+    <img src="https://par30games.net/wp-content/uploads/2026/05/Forza-Horizon-6-7.jpg">
+
+</div>
+<div class="game">
+    <h4><a class="game-name" href="https://www.playstation.com/en-us/games/ghost-of-yotei/">Ghost of Yōtei</a></h4>
+    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202504/2116/49934c62a922417e86bd3fc61a59b116cf7ae51e91d9a9de.jpg">
+    <p>Ghost of Yōtei is a 2025 action-adventure game developed by Sucker Punch Productions and published by Sony
+        Interactive Entertainment. It is a standalone sequel to the 2020 game Ghost of Tsushima</p>
+    <img src="https://twt-thumbs.washtimes.com/media/image/2025/11/24/ghost-yotei-1200_c1-0-1199-699_s885x516.jpg?3db05751dddf6b4cef986f3d12255275a790b4f0">
+</div>
+</body>
+</html>
