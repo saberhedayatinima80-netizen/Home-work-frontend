@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+</head>
+<style>
+    /**{*/
+    /*    box-sizing: 0px;*/
+    /*}*/
+    body {
+        background-color: #001800;
+
+    }
+
+    .body {
+        display: flex;
+        margin: 25px;
+    }
+
+    .column-right {
+        /*background-color: darkred;*/
+        margin-right: 20px;
+        padding: 0px 20px;
+        flex-grow: 2
+    }
+
+    .column-left {
+        flex-grow: 1;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 25px;
+        color: whitesmoke;
+        font-weight: bold;
+    }
+
+    .filter {
+        display: flex;
+
+        & input {
+            height: 40px;
+            border: 1px gray solid;
+            border-radius: 5px;
+            margin-right: 20px;
+            background-color: #001800;
+            padding: 10px;
+            color: whitesmoke;
+        }
+
+        & select {
+            border: 1px gray solid;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    }
+
+    .search-wrap {
+        position: relative;
+        flex-grow: 2;
+        margin-right: 20px;
+    }
+
+    .search-wrap::before {
+        content: "🔍";
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .search-wrap input {
+        width: 100%;
+        padding-left: 38px;
+        margin-right: 0;
+    }
+
+    .card-order .details-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s ease;
+    }
+
+    .card-order[open] .details-body {
+        grid-template-rows: 1fr;
+    }
+
+    .card-order .details-body-inner {
+        overflow: hidden;
+    }
+
+    .items {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 20px;
+        transition: all 0.3s ease;
+
+        & .card:hover {
+            transform: scale(1.12);
+            font-weight: bold;
+            background-color: #aaaaaa;
+            color: #001800;
+
+        }
+    }
+
+
+    .card {
+        display: grid;
+        border: 1px gray solid;
+        border-radius: 10px;
+        color: whitesmoke;
+        padding: 5px 10px;
+        /*width: 200px;*/
+        height: 150px;
+        margin: 20px 0px;
+
+
+        & div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .my-order {
+        display: grid;
+    }
+
+    .card-order {
+        background: #2a2a2a;
+        width: 420px;
+        border-radius: 12px;
+        padding: 20px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .header img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+    }
+
+    .name {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .service {
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .price {
+        font-size: 22px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .service-list {
+        margin: 15px 0;
+    }
+
+    .service-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #444;
+    }
+
+    .discount-buttons {
+        display: flex;
+        gap: 8px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .discount-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    /* استایل دکمه‌ها با radio */
+    .discount-option {
+        position: relative;
+        flex: 1;
+        min-width: 70px;
+    }
+
+    .discount-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .discount-label {
+        display: block;
+        padding: 12px 10px;
+        text-align: center;
+        background: #3a3a3a;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .discount-option input[type="radio"]:checked + .discount-label {
+        background: #ffffff;
+        color: #1e1e1e;
+        font-weight: bold;
+        border: 2px solid #4ade80;
+        transform: scale(1.05);
+    }
+
+    .discount-label:hover {
+        background: #444;
+    }
+
+    .change {
+        background: #2a2a2a;
+        width: 420px;
+        border-radius: 12px;
+        padding: 20px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        margin-top: 200px;
+    }
+    .card-price{
+        background-color: #424242;
+        border: 1px solid gray;
+        flex-grow: 1;
+        height: 100px;
+        border-radius: 10px;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .card-price .phone-icon {
+        width: 50px;
+        height: 50px;
+        stroke: white;
+        fill: none;
+        display: block;
+        margin: 16px auto 10px;
+    }
+    .charge-btn{
+        color: #1e1e1e;
+        background-color: white;
+        height: 50px;
+        margin-top: 50px;
+        border: 1px solid;
+        border-radius: 5px;
+        width: 100%;
+        font-size: x-large;
+        font-weight: bold;
+    }
+</style>
+<body>
+<div style="display: flex ; justify-content: space-between ; margin: 25px">
+
+    <div style="color: white">
+        ✖
+    </div>
+    <div style="color: white;padding-right: 600px;font-size: large;font-weight: bold">
+        Your Order
+    </div>
+</div>
+<div class="body">
+    <div class="column-right" >
+        <div class="header">
+            <p>professionals</p>
+            <p>Services</p>
+            <p>Products</p>
+            <p>Appointments</p>
+        </div>
+        <div class="filter">
+            <div class="search-wrap">
+                <input type="search" id="fname" name="fname"
+                       placeholder="You can find here everything !!!">
+            </div>
+            <select style="flex-grow: 1" name="cars" id="cars" placeholder="Select Cars !!!">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+
+        </div>
+        <div class="items">
+            <div class="card">
+                <p>Ford Mustang GT</p>
+                <div>
+                    <span>12000mile</span>
+                    <span>25000$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>BMW X5</p>
+                <div>
+                    <span>34000mile</span>
+                    <span>42000$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Honda Civic</p>
+                <div>
+                    <span>8500mile</span>
+                    <span>18500$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Tesla Model 3</p>
+                <div>
+                    <span>22000mile</span>
+                    <span>35000$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Mercedes C-Class</p>
+                <div>
+                    <span>51000mile</span>
+                    <span>28000$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Audi A4</p>
+                <div>
+                    <span>67000mile</span>
+                    <span>24000$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Toyota Camry</p>
+                <div>
+                    <span>45000mile</span>
+                    <span>19500$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Nissan Altima</p>
+                <div>
+                    <span>38000mile</span>
+                    <span>16000$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Chevrolet Malibu</p>
+                <div>
+                    <span>29000mile</span>
+                    <span>14200$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Hyundai Sonata</p>
+                <div>
+                    <span>15000mile</span>
+                    <span>17800$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Kia Sportage</p>
+                <div>
+                    <span>9200mile</span>
+                    <span>22500$</span>
+                </div>
+            </div>
+            <div class="card">
+                <p>Volkswagen Golf</p>
+                <div>
+                    <span>73000mile</span>
+                    <span>11500$</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="column-left" >
+        <div class="my-order">
+            <details class="card-order">
+                <summary class="header">
+                    <img src="https://i.pravatar.cc/50?img=1" alt="profile">
+                    <div>
+                        <div class="name">Derek L.</div>
+                        <div class="service">Haircut with Jack C.</div>
+                    </div>
+                    <div class="price" style="margin-left: auto;">$120.00</div>
+                </summary>
+
+                <div class="details-body">
+                    <div class="details-body-inner">
+                        <div class="service-list content">
+                            <div class="service-item">
+                                <span>Kids cut</span>
+                                <span>$45.00</span>
+                            </div>
+                            <div class="service-item">
+                                <span>Men's clipper cut</span>
+                                <span>$45.00</span>
+                            </div>
+                            <div class="service-item">
+                                <span>Beard oil</span>
+                                <span>$30.00</span>
+                            </div>
+                        </div>
+                        <div class="discount-buttons">
+                            <label class="discount-option">
+                                <input type="radio" name="discount-1" value="20" checked>
+                                <span class="discount-label">20%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-1" value="25">
+                                <span class="discount-label">25%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-1" value="30">
+                                <span class="discount-label">30%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-1" value="35">
+                                <span class="discount-label">35%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-1" value="custom">
+                                <span class="discount-label">Custom</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </details>
+            <details class="card-order">
+                <summary class="header">
+                    <img src="https://i.pravatar.cc/50?img=2" alt="profile">
+                    <div>
+                        <div class="name">Sarah M.</div>
+                        <div class="service">Color with Emma R.</div>
+                    </div>
+                    <div class="price" style="margin-left: auto;">$95.00</div>
+                </summary>
+
+                <div class="details-body">
+                    <div class="details-body-inner">
+                        <div class="service-list content">
+                            <div class="service-item">
+                                <span>Highlights</span>
+                                <span>$40.00</span>
+                            </div>
+                            <div class="service-item">
+                                <span>Root touch-up</span>
+                                <span>$35.00</span>
+                            </div>
+                            <div class="service-item">
+                                <span>Blow dry</span>
+                                <span>$20.00</span>
+                            </div>
+                        </div>
+                        <div class="discount-buttons">
+                            <label class="discount-option">
+                                <input type="radio" name="discount-2" value="20" checked>
+                                <span class="discount-label">20%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-2" value="25">
+                                <span class="discount-label">25%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-2" value="30">
+                                <span class="discount-label">30%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-2" value="35">
+                                <span class="discount-label">35%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-2" value="custom">
+                                <span class="discount-label">Custom</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </details>
+            <details class="card-order">
+                <summary class="header">
+                    <img src="https://i.pravatar.cc/50?img=3" alt="profile">
+                    <div>
+                        <div class="name">James K.</div>
+                        <div class="service">Beard trim with Mike T.</div>
+                    </div>
+                    <div class="price" style="margin-left: auto;">$65.00</div>
+                </summary>
+
+                <div class="details-body">
+                    <div class="details-body-inner">
+                        <div class="service-list content">
+                            <div class="service-item">
+                                <span>Beard trim</span>
+                                <span>$25.00</span>
+                            </div>
+                            <div class="service-item">
+                                <span>Hot towel</span>
+                                <span>$20.00</span>
+                            </div>
+                            <div class="service-item">
+                                <span>Styling</span>
+                                <span>$20.00</span>
+                            </div>
+                        </div>
+                        <div class="discount-buttons">
+                            <label class="discount-option">
+                                <input type="radio" name="discount-3" value="20" checked>
+                                <span class="discount-label">20%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-3" value="25">
+                                <span class="discount-label">25%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-3" value="30">
+                                <span class="discount-label">30%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-3" value="35">
+                                <span class="discount-label">35%</span>
+                            </label>
+
+                            <label class="discount-option">
+                                <input type="radio" name="discount-3" value="custom">
+                                <span class="discount-label">Custom</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </details>
+        </div>
+        <div class="change">
+            <div style="display: flex;justify-content: space-between;align-items: center">
+                <div style="display: grid ; gap: 5px;margin-top: 5px">
+                    <p style="margin: 0px">Total Price</p>
+                    <p style="color: rgb(170 170 170 / 0.34)">Including all taxes & fees</p>
+                </div>
+                <div style="font-weight: bold; font-size: x-large">
+                    2560.00$
+                </div>
+            </div>
+            <div style="display: flex;gap: 10px">
+                <div class="card-price">
+                    <div>
+                        <svg class="phone-icon" viewBox="0 0 24 24" stroke-width="1.5">
+                            <rect x="7" y="2" width="10" height="20" rx="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <div>This device</div>
+                </div>
+                <div class="card-price">
+                    <div>
+                        <svg class="phone-icon" viewBox="0 0 24 24" stroke-width="1.5">
+                            <rect x="7" y="2" width="10" height="20" rx="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <div>Frontdesk</div>
+                </div>
+                <div class="card-price">
+                    <div>
+                        <svg class="phone-icon" viewBox="0 0 24 24" stroke-width="1.5">
+                            <rect x="7" y="2" width="10" height="20" rx="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <div>See all</div>
+                </div>
+            </div>
+            <button class="charge-btn">Charge $500</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

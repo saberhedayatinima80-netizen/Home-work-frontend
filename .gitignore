@@ -1,0 +1,9 @@
+# Windows shortcut files
+*.lnk
+
+# OS / editor files
+Thumbs.db
+.DS_Store
+
+# IDE
+.idea/
