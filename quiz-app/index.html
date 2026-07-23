@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzical | Test Your Knowledge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- START SCREEN -->
+        <section id="start-screen" class="screen">
+            <h1 class="logo">Quizzical</h1>
+            <h2>Test Your Knowledge</h2>
+            <p class="subtitle">Challenge yourself with trivia questions from various categories</p>
+
+            <form id="start-form" class="start-form">
+                <label>
+                    Category
+                    <select id="category"></select>
+                </label>
+
+                <label>
+                    Difficulty
+                    <select id="difficulty">
+                        <option value="">Any Difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </label>
+
+                <label>
+                    Number of Questions
+                    <select id="amount">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </label>
+
+                <button type="submit" class="btn btn-primary" id="start-btn">Start Quiz</button>
+            </form>
+        </section>
+
+        <!-- LOADING -->
+        <section id="loading-screen" class="screen hidden">
+            <div class="spinner"></div>
+            <p>Loading your quiz...</p>
+        </section>
+
+        <!-- QUIZ SCREEN -->
+        <section id="quiz-screen" class="screen hidden">
+            <div class="quiz-meta">
+                <span id="quiz-category" class="badge"></span>
+                <span id="quiz-difficulty" class="badge badge-diff"></span>
+            </div>
+
+            <div class="quiz-header">
+                <span id="progress">Question 1/10</span>
+                <span id="timer">00:15</span>
+            </div>
+
+            <div class="score-bar">Score: <strong id="live-score">0</strong></div>
+
+            <h3 id="question-text">Loading question...</h3>
+
+            <div id="options" class="options"></div>
+
+            <div class="quiz-nav">
+                <button type="button" class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+                <button type="button" class="btn btn-primary" id="next-btn" disabled>Next</button>
+            </div>
+        </section>
+
+        <!-- RESULT SCREEN -->
+        <section id="result-screen" class="screen hidden">
+            <h2>Quiz Complete!</h2>
+            <p class="big-score"><span id="final-score">0</span>/<span id="final-total">10</span></p>
+            <p id="result-message" class="result-message">You're amazing!</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Time Taken</span>
+                    <span id="time-taken" class="stat-value">00:00</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Questions</span>
+                    <span id="stat-questions" class="stat-value">0/10</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Accuracy</span>
+                    <span id="accuracy" class="stat-value">0%</span>
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <button type="button" class="btn btn-primary" id="review-btn">Review Answers</button>
+                <button type="button" class="btn btn-secondary" id="new-quiz-btn">New Quiz</button>
+            </div>
+        </section>
+
+        <!-- REVIEW SCREEN -->
+        <section id="review-screen" class="screen hidden">
+            <h2>Review Answers</h2>
+            <div id="review-list" class="review-list"></div>
+            <button type="button" class="btn btn-primary" id="back-result-btn">Return to Results</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
