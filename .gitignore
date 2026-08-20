@@ -7,3 +7,7 @@ Thumbs.db
 
 # IDE
 .idea/
+
+# Node
+node_modules/
+dist/
