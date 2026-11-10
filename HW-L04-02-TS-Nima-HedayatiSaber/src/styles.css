@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #0075ff;
+  --color-muted: #a0aec0;
+  --color-panel: #0f1535;
+}
+
+@layer base {
+  body {
+    @apply min-h-screen bg-[#060b28] text-white antialiased;
+    font-family: "Plus Jakarta Display", system-ui, sans-serif;
+    background-image:
+      radial-gradient(circle at 70% 85%, rgba(0, 117, 255, 0.35), transparent 45%),
+      radial-gradient(circle at 15% 10%, rgba(72, 52, 212, 0.25), transparent 40%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3 { @apply m-0 mb-2.5 font-bold; }
+  h1 { @apply mb-0 text-2xl; }
+  h3 { @apply text-base; }
+  hr { @apply my-3.5 h-px border-0 bg-gradient-to-r from-transparent via-white/40 to-transparent; }
+  input, select, textarea {
+    @apply w-full min-w-0 rounded-2xl border border-slate-200/20 bg-panel/80 px-3.5 py-2.5 text-white;
+    font: inherit;
+  }
+  input:focus, select:focus, textarea:focus { @apply outline-2 outline-brand; }
+  select option { @apply text-black; }
+}
+
+@layer components {
+  .muted { @apply text-sm text-muted; }
+  .pos { @apply font-bold text-emerald-500; }
+  .neg { @apply font-bold text-red-400; }
+
+  .card {
+    @apply rounded-[20px] border border-white/10 p-5 backdrop-blur-xl;
+    background: linear-gradient(127deg, rgba(6, 11, 40, 0.94) 28%, rgba(10, 14, 35, 0.49) 91%);
+  }
+  .welcome {
+    background:
+      radial-gradient(circle at 30% 30%, #6fa8ff, transparent 40%),
+      linear-gradient(160deg, #0075ff, #4834d4 55%, #1b1464);
+  }
+
+  .btn {
+    @apply block cursor-pointer rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-white/15;
+  }
+  .btn.primary { @apply border-brand bg-brand hover:bg-brand/80; }
+  .btn.small { @apply px-2.5 py-1 text-xs; }
+  .link { @apply cursor-pointer border-0 bg-transparent text-blue-300; font: inherit; }
+  .link.light { @apply p-0 text-left font-semibold text-white; }
+  .icon { @apply cursor-pointer border-0 bg-transparent text-muted hover:text-red-400; }
+  .badge { @apply ml-2 rounded-full bg-red-400 px-2 py-0.5 text-xs text-white; }
+
+  .sidebar {
+    @apply flex flex-col gap-1.5 rounded-[20px] border border-white/10 px-4 py-6 md:sticky md:top-5 md:h-[calc(100vh-40px)];
+    background: linear-gradient(127deg, rgba(6, 11, 40, 0.94) 28%, rgba(10, 14, 35, 0.49) 91%);
+  }
+  .brand { @apply flex items-center justify-center gap-2.5 text-sm font-bold tracking-widest; }
+  .logo { @apply inline-grid size-7 place-items-center rounded-lg bg-white font-extrabold text-[#0b1437]; }
+  .nav {
+    @apply flex cursor-pointer items-center gap-3 rounded-2xl border-0 bg-transparent px-3 py-2.5 text-left font-semibold text-muted hover:text-white;
+    font: inherit;
+  }
+  .nav .ico { @apply grid size-8 place-items-center rounded-xl bg-panel; }
+  .nav.active { @apply bg-panel/90 text-white; }
+  .nav.active .ico { @apply bg-brand; }
+  .help {
+    @apply mt-auto flex-col gap-2 rounded-[20px] p-4 text-xs;
+    background: linear-gradient(135deg, #0075ff, #6c3df4 60%, #1b1464);
+  }
+  .avatar {
+    @apply grid size-9 place-items-center rounded-xl font-bold;
+    background: linear-gradient(135deg, #0075ff, #6c3df4);
+  }
+
+  .tile { @apply flex flex-col gap-1 rounded-2xl bg-panel/80 px-3.5 py-3; }
+  .tile b { @apply text-base; }
+  .info { @apply m-0 grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 text-sm; }
+  .info dt { @apply font-bold text-muted; }
+  .info dd { @apply m-0 break-words; }
+
+  .list { @apply m-0 mt-2.5 flex max-h-[420px] list-none flex-col gap-1 overflow-auto p-0; }
+  .list li { @apply flex items-center gap-2.5 border-b border-white/10 px-1 py-2.5; }
+  .list li > div { @apply min-w-0 flex-1; }
+
+  .legend { @apply m-0 flex list-none flex-col gap-1 p-0 text-sm; }
+  .legend.inline { @apply mt-2 flex-row gap-4; }
+  .legend i { @apply mr-1.5 inline-block size-2.5 rounded-sm; }
+}
