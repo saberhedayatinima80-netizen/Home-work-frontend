@@ -1,0 +1,55 @@
+.hero {
+  min-height: calc(100vh - 74px);
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+  background-image:
+    linear-gradient(rgba(67, 20, 7, 0.45), rgba(67, 20, 7, 0.55)),
+    url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  width: min(860px, 100%);
+  text-align: center;
+  color: #fff7ed;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: rgba(22, 163, 74, 0.9);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.overlay h1 {
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  opacity: 0.95;
+}
+
+.hints {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.hints span {
+  background: rgba(255, 247, 237, 0.18);
+  border: 1px solid rgba(255, 247, 237, 0.35);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}

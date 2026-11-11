@@ -1,0 +1,74 @@
+.topBar {
+  margin-bottom: 18px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  color: #9a3412;
+  font-size: 0.9rem;
+}
+
+.filters select {
+  min-width: 180px;
+  border: 1px solid #fdba74;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #fffaf5;
+  color: #431407;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.state,
+.error {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.state {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.pagination {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.pagination button {
+  border: none;
+  border-radius: 999px;
+  background: #ea580c;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

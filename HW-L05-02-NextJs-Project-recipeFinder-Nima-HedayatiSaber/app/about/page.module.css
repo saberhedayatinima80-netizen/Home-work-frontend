@@ -1,0 +1,21 @@
+.card {
+  background: #fffaf5;
+  border: 1px solid #fed7aa;
+  border-radius: 20px;
+  padding: 24px;
+  line-height: 1.7;
+}
+
+.card h2 {
+  color: #c2410c;
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+}
+
+.card ul {
+  margin-top: 14px;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: #9a3412;
+}
