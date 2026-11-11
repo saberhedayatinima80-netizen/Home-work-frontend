@@ -1,0 +1,91 @@
+.main {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.header {
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  color: #0f766e;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.05rem;
+}
+
+.list {
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 10px 30px -22px rgba(15, 23, 42, 0.45);
+}
+
+.badge {
+  display: inline-block;
+  background: #ccfbf1;
+  color: #0f766e;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.card h2 a:hover {
+  color: #0f766e;
+}
+
+.excerpt {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.readMore {
+  display: inline-block;
+  color: #0f766e;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.readMore:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 28px 16px 56px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
